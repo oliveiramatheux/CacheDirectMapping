@@ -4,9 +4,7 @@ public class Line {
     public int[] bloco; // array que representa a linha da cache
 
     public Line(int k) {
-        /**
-         * o tamanho do 'bloco' é o valor de 'k' passado como parâmetro
-         * */
+        // o tamanho do 'bloco' é o valor de 'k' passado como parâmetro
         this.bloco = new int[k];
     }
 }

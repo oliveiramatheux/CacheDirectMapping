@@ -1,7 +1,7 @@
-class EnderecoInvalido extends Exception{
+class EnderecoInvalido extends Exception {
     private final int ender;
 
-    public EnderecoInvalido(int ender){
+    public EnderecoInvalido(int ender) {
         this.ender = ender;
     }
 
