@@ -1,5 +1,3 @@
-package Hardware;
-
 class EnderecoInvalido extends Exception{
     private final int ender;
 

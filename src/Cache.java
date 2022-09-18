@@ -1,11 +1,9 @@
-package Hardware;
-
 public class Cache {
     private int w;
     private int r;
     private int t;
     private int s;
-    private final int k; // número de palavras em uma cahce line
+    private final int k; // número de palavras em uma cache line
     private Line[] cache; // array de cache lines
     private RAM ram; // instância da memória ram
 

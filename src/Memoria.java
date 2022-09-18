@@ -1,4 +1,4 @@
-package Hardware;
+
 
 public interface Memoria {
     /**

@@ -1,12 +1,8 @@
-package Hardware;
-
 /*
 Equipe:
-Henrique Matheus Alves Nunes
-João Victor de Lima
-Lucas Eduardo de Andrade Cavalari
-Matheus Richter
-Vinicius Sakamoto Tasca
+Eric Nielsen França
+Ivan Garbi Truti Assumpção
+Matheus de Oliveira Teles da Silva
 */
 
 public class main {

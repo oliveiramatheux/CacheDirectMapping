@@ -1,4 +1,4 @@
-package Hardware;
+
 
 public class RAM implements Memoria{
 

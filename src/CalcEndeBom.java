@@ -1,5 +1,3 @@
-package Hardware;
-
 public class CalcEndeBom {
 
     /*

@@ -1,5 +1,3 @@
-package Hardware;
-
 public class Line {
     public int tag;
     public boolean modif; // flag que indica se a cache foi modificada
