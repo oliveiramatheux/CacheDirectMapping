@@ -1,14 +1,12 @@
 class EnderecoInvalido extends Exception {
-    private final int ender;
+    private final int address;
 
-    public EnderecoInvalido(int ender) {
-        this.ender = ender;
+    public EnderecoInvalido(int address) {
+        this.address = address;
     }
 
     @Override
     public String toString() {
-        return "EnderecoInvalido{" +
-                "ender=" + ender +
-                '}';
+        return "Invalid Address: " + address;
     }
 }

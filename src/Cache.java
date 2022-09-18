@@ -3,7 +3,7 @@ public class Cache {
     private int r;
     private int t;
     private int s;
-    private final int k; // número de palavras em uma cache line
+    private final int k; // número de palavras de uma cache line
     private Line[] cache; // array de cache lines
     private RAM ram; // instância da memória ram
 
@@ -17,41 +17,40 @@ public class Cache {
         }
     }
 
-    // Função para escrever palavra na Ram
+    // Escreve palavra na Ram
     private void write() throws EnderecoInvalido {
         for(int i=0; i < k; i++) {
-            ram.Write(s+w, cache[r].bloco[i]);
+            ram.Write(s+w, cache[r].cacheLine[i]);
         }
     }
 
-    // Função para ler um bloco da Ram e salvar em uma Line na Cache
+    // Lê um bloco da Ram e salva em uma cache line
     private void read() throws EnderecoInvalido {
         for(int i = 0; i < k; i++) {
-            cache[r].bloco[i] = ram.Read(s+w);
+            cache[r].cacheLine[i] = ram.Read(s+w);
         }
     }
 
-    // Hit significa que o endereço buscado está na Cache, então apenas retorna a palavra correspondente
+    // Significa que o endereço buscado está na cache, então apenas retorna a palavra correspondente
     private int hit() {
-        return cache[r].bloco[w];
+        return cache[r].cacheLine[w];
     }
 
-    // Miss signiica que o endereço buscado não está na Cache, então verifica se a Line foi alterada, caso sim, salva na Ram,
-    // caso não, copia o bloco da Ram para a Cache
+    // Signiica que o endereço buscado não está na Cache, então verifica se a Line foi alterada, caso sim, salva na Ram, se não copia o bloco da Ram para a Cache
     private int miss() throws EnderecoInvalido {
         if(cache[r].modif) {
             write();
         }
         read();
-        return cache[r].bloco[w];
+        return cache[r].cacheLine[w];
     }
 
     // Separa os valores w, r, t e s do endereço solicitado para executar os calculos necessários
-    public int solicitacao(int ende) throws EnderecoInvalido {
-        w = CalcEndeBom.separa_w(ende);
-        r = CalcEndeBom.separa_r(ende);
-        t = CalcEndeBom.separa_t(ende);
-        s = CalcEndeBom.concatena_s(t, r);
+    public int calcAddress(int address) throws EnderecoInvalido {
+        w = CalcWRTS.calcW(address);
+        r = CalcWRTS.calcR(address);
+        t = CalcWRTS.calcT(address);
+        s = CalcWRTS.resolveS(t, r);
 
         if (t == cache[r].tag) {
             return hit();

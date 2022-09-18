@@ -1,41 +1,38 @@
 public class RAM implements Memoria {
-    private final int tam; // tamanho total da memória
-    private final int[] ram; // array que representa a memória
+    private final int size; // tamanho total da memória
+    private final int[] ram; // array que representa a memória ram
 
     public RAM(int k) {
-        tam = (int) Math.pow(2,k);
-        this.ram = new int[tam];
+        size = (int) Math.pow(2,k);
+        this.ram = new int[size];
     }
 
     @Override
-    public int Read(int ender) throws EnderecoInvalido {
+    public int Read(int address) throws EnderecoInvalido {
         // Função para ler da Ram
         // Faz validação do endereço passado no parâmetro,
-        // caso o endereço seja válido, realiza a leitura,
-        // caso o endereço não seja válido, lança exceção.
-        if(EhValido(ender)) {
-            return ram[ender];
+        // Caso o endereço seja válido, realiza a leitura, se não lança exceção.
+        if(isValid(address)) {
+            return ram[address];
         }
-        throw new EnderecoInvalido(ender);
+        throw new EnderecoInvalido(address);
     }
 
     @Override
-    public void Write(int ender, int palavra) throws EnderecoInvalido {
+    public void Write(int address, int word) throws EnderecoInvalido {
         // Função para escrever na Ram
         // Faz validação do endereço passado no parâmetro,
-        // caso o endereço seja válido, realiza a escrita,
-        // caso o endereço não seja válido, lança exceção.
-        if(EhValido(ender)) {
-            ram[ender] = palavra;
+        // Caso o endereço seja válido, realiza a escrita, se não lança exceção.
+        if(isValid(address)) {
+            ram[address] = word;
         } else {
-            throw new EnderecoInvalido(ender);
+            throw new EnderecoInvalido(address);
         }
     }
 
-    private boolean EhValido(int ender) {
+    private boolean isValid(int address) {
         // Função para validar endereço de leitura ou escrita
-        // Para ser válido um endereço precisa ser menor que o
-        // tamanho total da memória e maior do que zero
-        return (ender >= 0 && ender < tam);
+        // Para ser válido um endereço precisa ser menor que o tamanho total da memória e maior do que zero
+        return (address >= 0 && address < size);
     }
 }

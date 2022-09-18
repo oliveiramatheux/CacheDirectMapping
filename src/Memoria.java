@@ -1,5 +1,5 @@
 public interface Memoria {
-    // Interface comum para memórias, seja Ram ou cache
-    int Read(int ender) throws EnderecoInvalido;
-    void Write(int ender, int palavra) throws EnderecoInvalido;
+    // Interface da Ram ou cache
+    int Read(int address) throws EnderecoInvalido;
+    void Write(int address, int word) throws EnderecoInvalido;
 }

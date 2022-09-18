@@ -7,7 +7,7 @@ public class CPU {
         this.cache = cache;
     }
 
-    public void Run(int ender) throws EnderecoInvalido {
-        io.OutPut(cache.solicitacao(ender));
+    public void Run(int address) throws EnderecoInvalido {
+        io.OutPut(cache.calcAddress(address));
     }
 }
