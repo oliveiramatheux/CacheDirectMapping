@@ -11,8 +11,8 @@ public class Cache {
         this.ram = ram;
         this.k = k;
 
-        cache = new Line[128];
-        for(int i = 0; i < 128; i++) {
+        cache = new Line[64];
+        for(int i = 0; i < 64; i++) {
             cache[i] = new Line(k);
         }
     }
@@ -53,8 +53,10 @@ public class Cache {
         s = CalcWRTS.resolveS(t, r);
 
         if (t == cache[r].tag) {
+            System.out.println("deu hit");
             return hit();
         } else {
+            System.out.println("deu miss");
             return miss();
         }
     }
